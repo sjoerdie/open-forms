@@ -114,17 +114,27 @@ class FormDefinitionViewSet(viewsets.ReadOnlyModelViewSet):
     partial_update=extend_schema(summary=_("Update given details of a form")),
 )
 class FormViewSet(
-    mixins.CreateModelMixin, mixins.UpdateModelMixin, viewsets.ReadOnlyModelViewSet
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.ReadOnlyModelViewSet
 ):
-    queryset = Form.objects.filter(active=True)
+    queryset = Form.objects.filter(active=True, _is_deleted=False)
     lookup_field = "uuid"
     serializer_class = FormSerializer
     permission_classes = [IsStaffOrReadOnly]
 
     def get_authenticators(self):
-        if self.name in ["Export", "Copy"]:
+        if (
+            self.name in ["Export", "Copy"]
+            or self.request.method not in permissions.SAFE_METHODS
+        ):
             return [TokenAuthentication()]
         return super().get_authenticators()
+
+    def perform_destroy(self, instance):
+        instance._is_deleted = True
+        instance.save()
 
     @extend_schema(
         summary=_("Copy form"),

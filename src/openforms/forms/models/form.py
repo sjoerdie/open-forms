@@ -26,6 +26,7 @@ class Form(models.Model):
     # backend integration - which registration to use?
     registration_backend = BackendChoiceField(_("registration backend"), blank=True)
     registration_backend_options = JSONField(default=dict, blank=True, null=True)
+    _is_deleted = models.BooleanField(default=False)
 
     @property
     def login_required(self) -> bool:
