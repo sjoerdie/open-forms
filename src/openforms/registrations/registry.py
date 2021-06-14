@@ -4,6 +4,7 @@ from typing import Dict, Optional, Type
 
 from rest_framework import serializers
 
+from ..healthcheck.constants import BackendType
 from .constants import UNIQUE_ID_MAX_LENGTH
 
 SerializerCls = Type[serializers.Serializer]
@@ -57,6 +58,8 @@ class Registry:
     """
     A registry for registrations module plugins.
     """
+
+    backend_type = BackendType.registration
 
     def __init__(self):
         self._registry: Dict[str, RegisteredPlugin] = {}

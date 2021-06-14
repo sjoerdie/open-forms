@@ -133,6 +133,7 @@ INSTALLED_APPS = [
     "openforms.config",
     "openforms.emails",
     "openforms.forms",
+    "openforms.healthcheck",
     "openforms.products",
     "openforms.ui",
     "openforms.utils",
