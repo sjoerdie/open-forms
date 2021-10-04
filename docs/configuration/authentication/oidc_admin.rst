@@ -1,8 +1,8 @@
-.. _configuration_authentication_oidc:
+.. _configuration_authentication_oidc_admin:
 
-==============
-OpenID Connect
-==============
+===================================
+OpenID Connect voor beheerinterface
+===================================
 
 Open Formulieren ondersteunt Single Sign On (SSO) via het OpenID Connect protocol (OIDC) voor de beheerinterface.
 
@@ -23,13 +23,13 @@ flow:
 
 .. _configuration_oidc_appgroup:
 
-Configureren van OIDC zelf
-==========================
+Configureren van OIDC voor beheerinterface
+==========================================
 
 Contacteer de IAM beheerders in je organisatie om een *Client* aan te
 maken in de omgeving van de OpenID Connect provider.
 
-Voor de **Redirect URI** vul je ``https://open-formulieren.gemeente.nl/oidc/callback`` in,
+Voor de **Redirect URI** vul je ``https://open-formulieren.gemeente.nl/oidc/callback/`` in,
 waarbij je ``open-formulieren.gemeente.nl`` vervangt door het relevante domein.
 
 Aan het eind van dit proces moet je de volgende gegevens hebben (on premise):
@@ -72,3 +72,5 @@ Klik tot slot rechtsonder op **Opslaan**.
 Je kan vervolgens het makkelijkst testen of alles werkt door in een incognitoscherm
 naar https://open-formulieren.gemeente.nl/admin/ te navigeren en op *Inloggen met organisatieaccount* te
 klikken.
+
+
