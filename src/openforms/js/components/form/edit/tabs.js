@@ -1,4 +1,5 @@
 import {Utils} from 'formiojs';
+import i18next from 'i18next';
 
 import {getFullyQualifiedUrl} from '../../../utils/urls';
 
@@ -8,7 +9,7 @@ import {getFullyQualifiedUrl} from '../../../utils/urls';
 
 const BASIC = {
     key: 'basic',
-    label: 'Basic',
+    label: i18next.t('Basic'),
     components: [
         {
             type: 'textfield',
