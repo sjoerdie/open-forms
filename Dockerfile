@@ -88,6 +88,7 @@ COPY ./bin/celery_beat.sh /celery_beat.sh
 COPY ./bin/celery_flower.sh /celery_flower.sh
 RUN mkdir /app/log
 RUN mkdir /app/media
+RUN mkdir /app/private_media
 
 # copy backend build deps
 COPY --from=backend-build /usr/local/lib/python3.8 /usr/local/lib/python3.8
@@ -107,7 +108,7 @@ COPY ./src /app/src
 RUN chgrp -R 0 /app && \
     chmod -R g=u /app
 
-VOLUME /app/media /app/private-media /app/log
+VOLUME /app/media /app/private_media /app/log
 
 # RUN useradd -M -u 1000 maykin
 # RUN chown -R maykin /app
