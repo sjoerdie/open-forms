@@ -107,6 +107,8 @@ COPY ./src /app/src
 RUN chgrp -R 0 /app && \
     chmod -R g=u /app
 
+VOLUME /app/media /app/private-media /app/log
+
 # RUN useradd -M -u 1000 maykin
 # RUN chown -R maykin /app
 
