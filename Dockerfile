@@ -104,11 +104,14 @@ COPY --from=openformulieren/open-forms-sdk:latest /sdk /app/static/sdk
 # copy source code
 COPY ./src /app/src
 
-RUN useradd -M -u 1000 maykin
-RUN chown -R maykin /app
+RUN chgrp -R 0 /app && \
+    chmod -R g=u /app
+
+# RUN useradd -M -u 1000 maykin
+# RUN chown -R maykin /app
 
 # drop privileges
-USER maykin
+# USER maykin
 
 ARG COMMIT_HASH
 ENV GIT_SHA=${COMMIT_HASH}
